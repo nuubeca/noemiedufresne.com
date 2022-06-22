@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Understock;
+    src: url("/fonts/understock/UnderstockRegular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Autobiography;
+    src: url("/fonts/autobiography/autobiography.otf") format("opentype");
+}
+
+* {
+    font-family: "Understock", sans-serif;
+}
+
+.autobiography {
+    font-family: "Autobiography", sans-serif;
+}
