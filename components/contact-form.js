@@ -1,4 +1,5 @@
 import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
 
 export default function ContactForm() {
   const [state, handleSubmit] = useForm(
@@ -9,12 +10,16 @@ export default function ContactForm() {
     return <p>Thanks for your submission!</p>;
   }
 
+  const [contentCollab, setContentCollab] = useState(false);
+
+  const radioHandler = (status) => {
+    setContentCollab(status);
+  };
+
   return (
     <form className="flex flex-col space-y-4 p-4" onSubmit={handleSubmit}>
       <span className="pb-2">Collaboration request</span>
-      {/* <label className="label-text" htmlFor="email">
-        Email Address
-      </label> */}
+
       <input
         className="input input-bordered"
         placeholder="Name"
@@ -27,7 +32,7 @@ export default function ContactForm() {
 
       <input
         className="input input-bordered"
-        placeholder="email Address"
+        placeholder="Email Address"
         id="email"
         type="email"
         name="email"
@@ -42,6 +47,8 @@ export default function ContactForm() {
           value="brand"
           className="accent-fuchsia-600"
           defaultChecked={true}
+          checked={contentCollab === false}
+          onChange={(e) => radioHandler(false)}
         />
         <label htmlFor="brand">Brand collaboration</label>
       </div>
@@ -52,17 +59,30 @@ export default function ContactForm() {
           name="collaboType"
           value="content"
           className="accent-fuchsia-600"
+          checked={contentCollab === true}
+          onChange={(e) => radioHandler(true)}
         />
         <label htmlFor="content">Content collaboration</label>
       </div>
 
-      {/* <label className="label-text" htmlFor="message">
-        More information
-      </label> */}
-      <div className="text-sm font-thin">
-        **For content collaboration, please provide your Instagram page address
-        in the section below.
-      </div>
+      {contentCollab && (
+        <>
+          <input
+            className="input input-bordered"
+            placeholder="Instagram page address"
+            id="instagram"
+            type="text"
+            name="instagram"
+            required
+          />
+          <ValidationError
+            prefix="Instagram"
+            field="instagram"
+            errors={state.errors}
+          />
+        </>
+      )}
+
       <textarea
         className="textarea textarea-bordered"
         placeholder="More information"
