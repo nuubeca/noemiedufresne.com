@@ -2,10 +2,8 @@ import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import { SiOnlyfans } from "react-icons/si";
 import ContactForm from "../components/contact-form";
 
 const Home: NextPage = () => {
@@ -64,11 +62,13 @@ const Home: NextPage = () => {
                 </Link>
               </div>
             </div>
-            <div className=" text-lg md:text-xl w-full  bg-white text-fuchsia-600 p-2 md:p-4 rounded-full cursor-pointer">
+            <div className=" text-lg md:text-xl w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex justify-center items-center space-x-4">
-                  <SiOnlyfans />
+                  {/* <SiOnlyfans />
                   <span>Onlyfans</span>
+                   */}
+                  <img src="/images/onlyfans.svg" className=" w-32" />
                 </div>
               </Link>
             </div>

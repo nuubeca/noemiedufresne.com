@@ -43,7 +43,7 @@ export default function ContactForm() {
           className="accent-fuchsia-600"
           defaultChecked={true}
         />
-        <label for="brand">Brand collaboration</label>
+        <label htmlFor="brand">Brand collaboration</label>
       </div>
       <div>
         <input
@@ -53,7 +53,7 @@ export default function ContactForm() {
           value="content"
           className="accent-fuchsia-600"
         />
-        <label for="content">Content collaboration</label>
+        <label htmlFor="content">Content collaboration</label>
       </div>
 
       {/* <label className="label-text" htmlFor="message">
