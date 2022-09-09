@@ -2,6 +2,13 @@ import { useForm, ValidationError } from "@formspree/react";
 import { useState } from "react";
 
 export default function ContactForm() {
+  
+  const [contentCollab, setContentCollab] = useState(false);
+
+  const radioHandler = (status) => {
+    setContentCollab(status);
+  };
+
   const [state, handleSubmit] = useForm(
     process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
   );
@@ -9,12 +16,6 @@ export default function ContactForm() {
   if (state.succeeded) {
     return <p>Thanks for your submission!</p>;
   }
-
-  const [contentCollab, setContentCollab] = useState(false);
-
-  const radioHandler = (status) => {
-    setContentCollab(status);
-  };
 
   return (
     <form className="flex flex-col space-y-4 p-4" onSubmit={handleSubmit}>
@@ -47,7 +48,6 @@ export default function ContactForm() {
           value="brand"
           className="accent-fuchsia-600"
           defaultChecked={true}
-          checked={contentCollab === false}
           onChange={(e) => radioHandler(false)}
         />
         <label htmlFor="brand">Brand collaboration</label>
@@ -59,7 +59,6 @@ export default function ContactForm() {
           name="collaboType"
           value="content"
           className="accent-fuchsia-600"
-          checked={contentCollab === true}
           onChange={(e) => radioHandler(true)}
         />
         <label htmlFor="content">Content collaboration</label>
