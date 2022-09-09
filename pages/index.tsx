@@ -43,21 +43,21 @@ const Home: NextPage = () => {
               <div className="bg-fuchsia-600 p-2 md:p-4 rounded-full cursor-pointer">
                 <Link href="https://www.instagram.com/noemie.dufresne">
                   <span>
-                    <BsInstagram />
+                    <BsInstagram size={35} />
                   </span>
                 </Link>
               </div>
               <div className="bg-fuchsia-600 p-2 md:p-4 rounded-full cursor-pointer">
                 <Link href="https://twitter.com/dufresnenoemie1">
                   <span>
-                    <BsTwitter />
+                    <BsTwitter size={35} />
                   </span>
                 </Link>
               </div>
               <div className="bg-fuchsia-600 p-2 md:p-4 rounded-full cursor-pointer">
                 <Link href="https://www.tiktok.com/@noemie_dufresne">
                   <span>
-                    <FaTiktok />
+                    <FaTiktok size={35} />
                   </span>
                 </Link>
               </div>
