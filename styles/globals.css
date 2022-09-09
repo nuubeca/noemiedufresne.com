@@ -12,10 +12,16 @@
   src: url("/fonts/autobiography/autobiography.otf") format("opentype");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap");
+
 * {
-  font-family: "Understock", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .autobiography {
   font-family: "Autobiography", sans-serif;
+  /* font-family: "Mr Dafoe", cursive; */
+  /* font-family: "Herr Von Muellerhoff", cursive; */
 }
