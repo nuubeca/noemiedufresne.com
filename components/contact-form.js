@@ -1,26 +1,43 @@
-import { useForm, ValidationError } from "@formspree/react";
 import { useState } from "react";
 
 export default function ContactForm() {
-  
   const [contentCollab, setContentCollab] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(false);
+
+  if (succeeded) {
+    return <p>Thanks for your submission!</p>;
+  }
 
   const radioHandler = (status) => {
     setContentCollab(status);
   };
 
-  const [state, handleSubmit] = useForm(
-    process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
-  );
+  async function handleOnSubmit(e) {
+    e.preventDefault();
 
-  if (state.succeeded) {
-    return <p>Thanks for your submission!</p>;
+    const formData = {};
+
+    Array.from(e.currentTarget.elements).forEach((field) => {
+      if (!field.name) return;
+      formData[field.name] = field.value;
+    });
+
+    const result = await fetch("/api/mail", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+
+    if (result.status === 200) {
+      setSucceeded(true);
+    } else {
+      setError(true);
+    }
   }
 
   return (
-    <form className="flex flex-col space-y-4 p-4" onSubmit={handleSubmit}>
+    <form className="flex flex-col space-y-4 p-4" onSubmit={handleOnSubmit}>
       <span className="pb-2">Collaboration request</span>
-
       <input
         className="input input-bordered"
         placeholder="Name"
@@ -29,8 +46,6 @@ export default function ContactForm() {
         name="name"
         required
       />
-      <ValidationError prefix="Name" field="name" errors={state.errors} />
-
       <input
         className="input input-bordered"
         placeholder="Email Address"
@@ -39,7 +54,6 @@ export default function ContactForm() {
         name="email"
         required
       />
-      <ValidationError prefix="Email" field="email" errors={state.errors} />
       <div>
         <input
           type="radio"
@@ -74,11 +88,6 @@ export default function ContactForm() {
             name="instagram"
             required
           />
-          <ValidationError
-            prefix="Instagram"
-            field="instagram"
-            errors={state.errors}
-          />
         </>
       )}
 
@@ -89,15 +98,31 @@ export default function ContactForm() {
         name="message"
         required
       />
-      <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <button
-        className="btn btn-secondary"
-        type="submit"
-        disabled={state.submitting}
-      >
+      <button className="btn btn-secondary" type="submit">
         Submit
       </button>
-      <ValidationError errors={state.errors} />
+      {error && (
+        <>
+          <div className="alert alert-error shadow-lg">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Error! Something went wrong sending message.</span>
+            </div>
+          </div>
+        </>
+      )}
     </form>
   );
 }

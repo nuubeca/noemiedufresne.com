@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/runtime": "^7.18.3",
     "@formspree/react": "^2.2.5",
+    "@sendgrid/mail": "^7.7.0",
     "daisyui": "^2.17.0",
     "next": "latest",
     "next-seo": "^5.4.0",
