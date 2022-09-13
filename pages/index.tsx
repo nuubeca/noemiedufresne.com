@@ -105,7 +105,8 @@ const Home: NextPage = () => {
             >
               ✕
             </label>
-            <ContactForm />
+            This function is temporarily unavailable.
+            {/* <ContactForm /> */}
           </div>
         </div>
       </div>
