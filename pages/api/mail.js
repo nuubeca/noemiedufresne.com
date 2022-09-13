@@ -15,8 +15,9 @@ export default function handler(req, res) {
 
   try {
     mail.send({
-      to: "creationymeon@gmail.com",
-      from: "info@noemiedufresne.com",
+      to: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_TO,
+      from: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_FROM,
+      cc : "info@nuube.ca",
       subject: "New collaboration request!",
       text: message,
       html: message.replace(/rn/g, "<br>"),
