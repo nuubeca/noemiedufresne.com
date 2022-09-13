@@ -4,6 +4,8 @@ mail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
 export default function handler(req, res) {
   const body = JSON.parse(req.body);
+  console.log("Key")
+  console.log(process.env.NEXT_PUBLIC_SENDGRID_API_KEY)
 
   const message = `
   Name: ${body.name}rn
