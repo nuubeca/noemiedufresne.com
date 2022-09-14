@@ -7,8 +7,6 @@ import { FaTiktok } from "react-icons/fa";
 import ContactForm from "../components/contact-form";
 
 const Home: NextPage = () => {
-  console.log("dha");
-  console.log(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
   return (
     <>
       <NextSeo

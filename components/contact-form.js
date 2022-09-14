@@ -27,7 +27,6 @@ export default function ContactForm() {
       method: "POST",
       body: JSON.stringify(formData),
     });
-    console.log(result)
 
     if (result.status === 200) {
       setSucceeded(true);

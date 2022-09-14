@@ -1,13 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const mail = require("@sendgrid/mail");
 mail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
-console.log(mail);
-console.log("KeyA");
 
 export default async function handler(req, res) {
   const body = JSON.parse(req.body);
-  console.log("Key");
-  console.log(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
   const message = `
   Name: ${body.name}rn
