@@ -1,13 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const mail = require("@sendgrid/mail");
 mail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
-console.log(mail)
-console.log("KeyA")
+console.log(mail);
+console.log("KeyA");
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const body = JSON.parse(req.body);
-  console.log("Key")
-  console.log(process.env.NEXT_PUBLIC_SENDGRID_API_KEY)
+  console.log("Key");
+  console.log(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
 
   const message = `
   Name: ${body.name}rn
@@ -18,10 +18,10 @@ export default function handler(req, res) {
 `;
 
   try {
-    mail.send({
+    await mail.send({
       to: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_TO,
       from: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_FROM,
-      cc : "info@nuube.ca",
+      cc: "info@nuube.ca",
       subject: "New collaboration request!",
       text: message,
       html: message.replace(/rn/g, "<br>"),
