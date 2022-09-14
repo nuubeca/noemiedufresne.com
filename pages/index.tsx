@@ -7,6 +7,8 @@ import { FaTiktok } from "react-icons/fa";
 import ContactForm from "../components/contact-form";
 
 const Home: NextPage = () => {
+  console.log("dha");
+  console.log(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
   return (
     <>
       <NextSeo
@@ -15,7 +17,7 @@ const Home: NextPage = () => {
         canonical="https://noemiedufresne.com/"
       />
       <div className="bg-black/50">
-        <div className="relative h-screen flex justify-center items-center px-6 py-4 md:p-10">
+        <div className="relative min-h-screen flex justify-center items-center px-6 py-4 md:p-10">
           <Image
             className="-z-50"
             layout="fill"
@@ -24,7 +26,7 @@ const Home: NextPage = () => {
             priority
             src="/images/background.jpg"
           />
-          <div className="z-10 w-full md:w-72 h-full flex flex-col items-center justify-around text-center text-white">
+          <div className="z-10 w-full md:w-72 h-full flex flex-col space-y-6 items-center text-center text-white">
             <div className="z-10 h-40 w-40 md:h-56 md:w-56 relative border-4 border-fuchsia-600 rounded-full">
               <Image
                 src={"/images/avatar.jpg"}
@@ -105,8 +107,8 @@ const Home: NextPage = () => {
             >
               ✕
             </label>
-            This function is temporarily unavailable.
-            {/* <ContactForm /> */}
+            {/* This function is temporarily unavailable. */}
+            <ContactForm />
           </div>
         </div>
       </div>
