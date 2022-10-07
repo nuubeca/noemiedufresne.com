@@ -72,6 +72,23 @@ const Home: NextPage = () => {
                 </div>
               </Link>
             </div>
+            <div>
+              <a href="https://fruitz.me/NoemiexFruitz" target="_blank">
+                <div className="flex flex-col space-y-2 justify-center items-center">
+                  <h2 className=" text-4xl">Fruitz</h2>
+                  <img
+                    className="rounded-xl w-24"
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Purple112/v4/a8/7e/55/a87e55ef-afcc-b7da-4e04-55f29f034dd6/AppIcon-1x_U007emarketing-0-5-0-85-220.png/230x0w.webp"
+                  />
+                  <img
+                    className="w-32"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/135px-Download_on_the_App_Store_Badge.svg.png"
+                    alt=""
+                  />
+                  {/* <p>Fruitz 🍑🍒 Lien de l’app</p> */}
+                </div>
+              </a>
+            </div>
             <div className=" text-lg md:text-xl  w-full  bg-white text-fuchsia-600 p-3 md:p-4 rounded-full cursor-pointer">
               <Link href="https://mym.fans/Noemiedufresne">
                 <div className="flex justify-center items-center space-x-4">
