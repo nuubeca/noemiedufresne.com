@@ -85,7 +85,6 @@ const Home: NextPage = () => {
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/135px-Download_on_the_App_Store_Badge.svg.png"
                     alt=""
                   />
-                  {/* <p>Fruitz 🍑🍒 Lien de l’app</p> */}
                 </div>
               </a>
             </div> */}
