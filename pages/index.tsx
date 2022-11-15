@@ -72,7 +72,7 @@ const Home: NextPage = () => {
                 </div>
               </Link>
             </div>
-            <div>
+            {/* <div>
               <a href="https://fruitz.me/NoemiexFruitz" target="_blank">
                 <div className="flex flex-col space-y-2 justify-center items-center">
                   <h2 className=" text-4xl">Fruitz</h2>
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
                   {/* <p>Fruitz 🍑🍒 Lien de l’app</p> */}
                 </div>
               </a>
-            </div>
+            </div> */}
             <div className=" text-lg md:text-xl  w-full  bg-white text-fuchsia-600 p-3 md:p-4 rounded-full cursor-pointer">
               <Link href="https://mym.fans/Noemiedufresne">
                 <div className="flex justify-center items-center space-x-4">
