@@ -55,7 +55,7 @@ const Home: NextPage = () => {
                 </Link>
               </div>
               <div className="bg-fuchsia-600 p-2 md:p-4 rounded-full cursor-pointer">
-                <Link href="https://www.tiktok.com/@noemie_dufresne">
+                <Link href="https://www.tiktok.com/@noumyofficiel?_t=8XXZdFxfMzV&_r=1">
                   <span>
                     <FaTiktok size={35} />
                   </span>
