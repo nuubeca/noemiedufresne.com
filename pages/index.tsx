@@ -62,6 +62,7 @@ const Home: NextPage = () => {
                 </Link>
               </div>
             </div>
+            <div>⬇️ click here ⬇️</div>
             <Link href="https://twitter.com/dufresnenoemie1">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link>
