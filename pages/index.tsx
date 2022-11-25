@@ -63,7 +63,7 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div>⬇️ click here ⬇️</div>
-            <Link href="https://twitter.com/dufresnenoemie1">
+            <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link>
             <div className=" text-lg md:text-xl w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
