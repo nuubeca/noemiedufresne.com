@@ -62,6 +62,9 @@ const Home: NextPage = () => {
                 </Link>
               </div>
             </div>
+            <Link href="https://twitter.com/dufresnenoemie1">
+              <img src="/images/blackfriday.svg" className="w-full" />
+            </Link>
             <div className=" text-lg md:text-xl w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex justify-center items-center space-x-4">
