@@ -68,7 +68,7 @@ const Home: NextPage = () => {
             </Link> */}
             <div className=" text-lg md:text-xl w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
-                <div className="flex justify-center items-center space-x-4 text-xs">
+                <div className="flex justify-center items-center space-x-4 text-md">
                   <span className="text-slate-700">#New MeetFans video</span>
 
                   {/* <SiOnlyfans />
