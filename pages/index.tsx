@@ -66,10 +66,14 @@ const Home: NextPage = () => {
             <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link> */}
-            <div className=" text-lg md:text-xl w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
+            <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
-                <div className="flex justify-center items-center space-x-4 text-md">
-                  <span className="text-slate-700">#New MeetFans video</span>
+                <div className="flex flex-col justify-center items-center space-x-4 text-md">
+                  <span className=" text-rose-400">
+                    New <span className="text-black">Free</span> V
+                    <span className=" text-black">-</span>DAY{" "}
+                    <span className="text-black">video</span> 🌷🎥
+                  </span>
 
                   {/* <SiOnlyfans />
                   <span>Onlyfans</span>
