@@ -69,11 +69,11 @@ const Home: NextPage = () => {
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
-                  <span className=" text-rose-400">
+                  {/* <span className=" text-rose-400">
                     New <span className="text-black">Free</span> V
                     <span className=" text-black">-</span>DAY{" "}
                     <span className="text-black">video</span> 🌷🎥
-                  </span>
+                  </span> */}
 
                   {/* <SiOnlyfans />
                   <span>Onlyfans</span>
