@@ -37,30 +37,7 @@ export default function ContactForm() {
 
   return (
     <form className="flex flex-col space-y-4 p-4" onSubmit={handleOnSubmit}>
-      <span className="pb-2">Collaboration request</span>
-      <div>
-        <input
-          type="radio"
-          id="brand"
-          name="collaboType"
-          value="brand"
-          className="accent-fuchsia-600"
-          defaultChecked={true}
-          onChange={(e) => radioHandler(false)}
-        />
-        <label htmlFor="brand">Brand collaboration</label>
-      </div>
-      <div>
-        <input
-          type="radio"
-          id="content"
-          name="collaboType"
-          value="content"
-          className="accent-fuchsia-600"
-          onChange={(e) => radioHandler(true)}
-        />
-        <label htmlFor="content">Content collaboration</label>
-      </div>
+      <span className="pb-2">Application for boy/girl Onlyfan video</span>
       <input
         className="input input-bordered"
         placeholder="Name"
@@ -77,27 +54,55 @@ export default function ContactForm() {
         name="email"
         required
       />
-
-      {contentCollab && (
-        <>
-          <input
-            className="input input-bordered"
-            placeholder="Instagram"
-            id="instagram"
-            type="text"
-            name="instagram"
-            required
-          />
-        </>
-      )}
-
-      <textarea
-        className="textarea textarea-bordered"
-        placeholder="More information"
-        id="message"
-        name="message"
+      <input
+        className="input input-bordered"
+        placeholder="Instagram / Facebook page address"
+        id="instagram"
+        type="text"
+        name="instagram"
         required
       />
+      <input
+        className="input input-bordered"
+        placeholder="How old are you?"
+        id="age"
+        type="number"
+        name="age"
+        required
+      />
+      <input
+        className="input input-bordered"
+        placeholder="What city do you live in ?"
+        id="city"
+        type="text"
+        name="city"
+        required
+      />
+      <input
+        className="input input-bordered"
+        placeholder="What is your job ?"
+        id="job"
+        type="text"
+        name="job"
+        required
+      />
+      <textarea
+        className="textarea textarea-bordered"
+        placeholder="Describe yourself in a few words ?"
+        id="description"
+        name="description"
+        required
+      />
+      <input
+        type="radio"
+        id="brand"
+        name="collaboType"
+        value="brand"
+        className="accent-fuchsia-600"
+        defaultChecked={true}
+        onChange={(e) => radioHandler(false)}
+      />
+
       <button className="btn btn-secondary" type="submit">
         Submit
       </button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
 import ContactForm from "../components/contact-form";
+import ApplicationForm from "../components/application-form";
 
 const Home: NextPage = () => {
   return (
@@ -66,6 +67,12 @@ const Home: NextPage = () => {
             <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link> */}
+            <label
+              htmlFor="my-modal-4"
+              className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
+            >
+              Application Boy/Girl video
+            </label>
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
@@ -133,6 +140,19 @@ const Home: NextPage = () => {
             </label>
             {/* This function is temporarily unavailable. */}
             <ContactForm />
+          </div>
+        </div>
+        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box relative">
+            <label
+              htmlFor="my-modal-4"
+              className="btn btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
+            {/* This function is temporarily unavailable. */}
+            <ApplicationForm />
           </div>
         </div>
       </div>
