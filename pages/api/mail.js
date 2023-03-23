@@ -19,8 +19,8 @@ export default async function handler(req, res) {
 
   try {
     await mail.send({
-      // to: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_TO,
-      to: "max@nuube.ca",
+      to: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_TO,
+      // to: "max@nuube.ca",
       from: process.env.NEXT_PUBLIC_SENDGRID_EMAIL_FROM,
       cc: "info@nuube.ca",
       subject: "New collaboration request!",
