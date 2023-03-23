@@ -94,13 +94,10 @@ export default function ContactForm() {
         required
       />
       <input
-        type="radio"
-        id="brand"
+        type="hidden"
+        id="application"
         name="collaboType"
-        value="brand"
-        className="accent-fuchsia-600"
-        defaultChecked={true}
-        onChange={(e) => radioHandler(false)}
+        value="application"
       />
 
       <button className="btn btn-secondary" type="submit">
