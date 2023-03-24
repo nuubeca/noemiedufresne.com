@@ -71,7 +71,7 @@ const Home: NextPage = () => {
               htmlFor="my-modal-4"
               className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
             >
-              Application Boy/Girl video
+              Auditions Boy/Girl video
             </label>
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">

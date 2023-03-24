@@ -37,7 +37,7 @@ export default function ContactForm() {
 
   return (
     <form className="flex flex-col space-y-4 p-4" onSubmit={handleOnSubmit}>
-      <span className="pb-2">Application for boy/girl Onlyfan video</span>
+      <span className="pb-2">Audition for boy/girl Onlyfan video</span>
       <input
         className="input input-bordered"
         placeholder="Name"
