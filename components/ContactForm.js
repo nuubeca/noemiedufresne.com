@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function ContactForm() {
   const [contentCollab, setContentCollab] = useState(false);
+  const [CollaboType, setCollaboType] = useState('brand');
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(false);
 
@@ -9,8 +10,9 @@ export default function ContactForm() {
     return <p>Thanks for your submission!</p>;
   }
 
-  const radioHandler = (status) => {
+  const radioHandler = (status,type) => {
     setContentCollab(status);
+    setCollaboType(type);
   };
 
   async function handleOnSubmit(e) {
@@ -22,6 +24,8 @@ export default function ContactForm() {
       if (!field.name) return;
       formData[field.name] = field.value;
     });
+
+    formData["collaboType"] = CollaboType;
 
     const result = await fetch("/api/mail", {
       method: "POST",
@@ -37,7 +41,30 @@ export default function ContactForm() {
 
   return (
     <form className="flex flex-col space-y-4 p-4" onSubmit={handleOnSubmit}>
-      <span className="pb-2">Audition for boy/girl Onlyfan video</span>
+      <span className="pb-2">Collaboration request</span>
+      <div>
+        <input
+          type="radio"
+          id="brand"
+          name="collaboType"
+          value="brand"
+          className="accent-fuchsia-600"
+          defaultChecked={true}
+          onChange={(e) => radioHandler(false,'brand')}
+        />
+        <label htmlFor="brand">Brand collaboration</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="content"
+          name="collaboType"
+          value="content"
+          className="accent-fuchsia-600"
+          onChange={(e) => radioHandler(true,'content')}
+        />
+        <label htmlFor="content">Content collaboration</label>
+      </div>
       <input
         className="input input-bordered"
         placeholder="Name"
@@ -54,52 +81,27 @@ export default function ContactForm() {
         name="email"
         required
       />
-      <input
-        className="input input-bordered"
-        placeholder="Instagram / Facebook page address"
-        id="instagram"
-        type="text"
-        name="instagram"
-        required
-      />
-      <input
-        className="input input-bordered"
-        placeholder="How old are you?"
-        id="age"
-        type="number"
-        name="age"
-        required
-      />
-      <input
-        className="input input-bordered"
-        placeholder="What city do you live in ?"
-        id="city"
-        type="text"
-        name="city"
-        required
-      />
-      <input
-        className="input input-bordered"
-        placeholder="What is your job ?"
-        id="job"
-        type="text"
-        name="job"
-        required
-      />
+
+      {contentCollab && (
+        <>
+          <input
+            className="input input-bordered"
+            placeholder="Instagram"
+            id="instagram"
+            type="text"
+            name="instagram"
+            required
+          />
+        </>
+      )}
+
       <textarea
         className="textarea textarea-bordered"
-        placeholder="Describe yourself in a few words ?"
-        id="description"
-        name="description"
+        placeholder="More information"
+        id="message"
+        name="message"
         required
       />
-      <input
-        type="hidden"
-        id="application"
-        name="collaboType"
-        value="application"
-      />
-
       <button className="btn btn-secondary" type="submit">
         Submit
       </button>

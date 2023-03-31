@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import ContactForm from "../components/contact-form";
-import ApplicationForm from "../components/application-form";
+import ContactForm from "../components/ContactForm";
+import ContactForm2 from "../components/ContactForm2";
+import ApplicationForm from "../components/ApplicationForm";
 
 const Home: NextPage = () => {
   return (
@@ -69,7 +70,7 @@ const Home: NextPage = () => {
             </Link> */}
             <label
               htmlFor="my-modal-4"
-              className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
+              className="text-lg md:text-sm bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
             >
               Candidatures auditions Boy/Girl video
             </label>
