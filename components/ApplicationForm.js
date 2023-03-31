@@ -198,7 +198,7 @@ export default function ContactForm() {
       />
       {errors.description && <span>{errors.description.message}</span>}
 
-      <input 
+      {/* <input 
       {...register("photo1")}
       className="file-input file-input-bordered w-full max-w-xs"
       id="photo1"
@@ -207,7 +207,7 @@ export default function ContactForm() {
       {photo1 && (
         <p>File saved successfully.</p>
       )}
-      {errors.attachment && <span>{errors.attachment.message}</span>}
+      {errors.attachment && <span>{errors.attachment.message}</span>} */}
 
       <button className="btn btn-secondary" type="submit">
         Submit
