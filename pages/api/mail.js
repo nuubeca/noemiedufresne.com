@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     message += `Informations supplémentaire: ${body.message}\r\n`;
   }
   if (body.photo1) {
-    message += `Photo1: <a href="http://localhost:3000${body.photo1}">ICI</a>\r\n`;
+    message += `Photo1: <a href="https://noemiedufresne.com${body.photo1}">ICI</a>\r\n`;
   }
 
   try {
