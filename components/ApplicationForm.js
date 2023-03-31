@@ -42,8 +42,8 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        const { url } = await response.json();
-        setPhoto1(url);
+        const { name } = await response.json();
+        setPhoto1(name);
       } else {
         console.error("File upload failed.");
       }
@@ -198,16 +198,16 @@ export default function ContactForm() {
       />
       {errors.description && <span>{errors.description.message}</span>}
 
-      {/* <input 
+      <input 
       {...register("photo1")}
       className="file-input file-input-bordered w-full max-w-xs"
       id="photo1"
       name="photo1"
       type="file" onChange={handleFileUpload} />
       {photo1 && (
-        <p>File saved successfully.</p>
+        <p>File saved successfully. {photo1}</p>
       )}
-      {errors.attachment && <span>{errors.attachment.message}</span>} */}
+      {errors.attachment && <span>{errors.attachment.message}</span>}
 
       <button className="btn btn-secondary" type="submit">
         Submit

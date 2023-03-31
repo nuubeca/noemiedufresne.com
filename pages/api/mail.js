@@ -35,7 +35,8 @@ export default async function handler(req, res) {
     message += `Informations supplémentaire: ${body.message}\r\n`;
   }
   if (body.photo1) {
-    message += `Photo1: <a href="https://noemiedufresne.com${body.photo1}">ICI</a>\r\n`;
+    let photo1url = `https://noemiedufresne.s3.ca-central-1.amazonaws.com/${body.photo1}`;
+    message += `Photo1: <a href="${photo1url}">ICI</a>\r\n<img src="${photo1url}">\n\r`;
   }
 
   try {
@@ -46,7 +47,7 @@ export default async function handler(req, res) {
       cc: "info@nuube.ca",
       subject: "New collaboration request!",
       text: message,
-      html: message.replace(/\r\n/g, '<br>'),
+      html: message.replace(/\r\n/g, "<br>"),
     });
     res.status(200).json({ status: "Ok" });
   } catch (error) {
