@@ -5,7 +5,6 @@ import Link from "next/link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
 import ContactForm from "../components/ContactForm";
-import ContactForm2 from "../components/ContactForm2";
 import ApplicationForm from "../components/ApplicationForm";
 
 const Home: NextPage = () => {
