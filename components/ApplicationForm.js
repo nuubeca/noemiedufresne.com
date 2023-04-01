@@ -16,6 +16,7 @@ export default function ContactForm() {
   const [description, setDescription] = useState("");
   const [photo1, setPhoto1] = useState("");
   const [photo2, setPhoto2] = useState("");
+  const [canSubmit, setCanSubmit] = useState(false);
 
   const schema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -26,6 +27,7 @@ export default function ContactForm() {
     job: Yup.string().required("job is required"),
     description: Yup.string().required("description is required"),
     job: Yup.string().required("job is required"),
+    file1: Yup.mixed().required("A file is required"),
   });
 
   const handleFileUpload = async (e) => {
@@ -44,6 +46,7 @@ export default function ContactForm() {
       if (response.ok) {
         const { name } = await response.json();
         setPhoto1(name);
+        setCanSubmit(true);
       } else {
         console.error("File upload failed.");
       }
@@ -89,6 +92,7 @@ export default function ContactForm() {
 
     if (result.ok) {
       setSucceeded(true);
+      setCanSubmit(true);
     } else {
       setError(true);
     }
@@ -111,9 +115,8 @@ export default function ContactForm() {
         onChange={(e) => {
           setName(e.target.value);
         }}
-        required
       />
-      {errors.name && <span>{errors.name.message}</span>}
+      {errors.name && <span style={{ color: 'red' }}>{errors.name.message}</span>}
 
       <input
         {...register("email")}
@@ -125,9 +128,8 @@ export default function ContactForm() {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
-        required
       />
-      {errors.email && <span>{errors.email.message}</span>}
+      {errors.email && <span style={{ color: 'red' }}>{errors.email.message}</span>}
 
       <input
         {...register("instagram")}
@@ -139,9 +141,8 @@ export default function ContactForm() {
         onChange={(e) => {
           setInstagram(e.target.value);
         }}
-        required
       />
-      {errors.instagram && <span>{errors.instagram.message}</span>}
+      {errors.instagram && <span style={{ color: 'red' }}>{errors.instagram.message}</span>}
 
       <input
         {...register("age")}
@@ -153,9 +154,8 @@ export default function ContactForm() {
         onChange={(e) => {
           setAge(e.target.value);
         }}
-        required
       />
-      {errors.age && <span>{errors.age.message}</span>}
+      {errors.age && <span style={{ color: 'red' }}>{errors.age.message}</span>}
 
       <input
         {...register("city")}
@@ -167,9 +167,8 @@ export default function ContactForm() {
         onChange={(e) => {
           setCity(e.target.value);
         }}
-        required
       />
-      {errors.city && <span>{errors.city.message}</span>}
+      {errors.city && <span style={{ color: 'red' }}>{errors.city.message}</span>}
 
       <input
         {...register("job")}
@@ -181,9 +180,8 @@ export default function ContactForm() {
         onChange={(e) => {
           setJob(e.target.value);
         }}
-        required
       />
-      {errors.job && <span>{errors.job.message}</span>}
+      {errors.job && <span style={{ color: 'red' }}>{errors.job.message}</span>}
 
       <textarea
         {...register("description")}
@@ -194,22 +192,21 @@ export default function ContactForm() {
         onChange={(e) => {
           setDescription(e.target.value);
         }}
-        required
       />
-      {errors.description && <span>{errors.description.message}</span>}
-
+      {errors.description && <span style={{ color: 'red' }}>{errors.description.message}</span>}
+<div className=" font-bold text-red-700">You need to fill all fields to be able to submit</div>
       <input 
-      {...register("photo1")}
+      {...register("file1")}
       className="file-input file-input-bordered w-full max-w-xs"
-      id="photo1"
-      name="photo1"
-      type="file" onChange={handleFileUpload} />
+      id="file1"
+      name="file1"
+      type="file" onChange={handleFileUpload}/>
       {photo1 && (
-        <p>File saved successfully. {photo1}</p>
+        <p>File saved successfully.</p>
       )}
-      {errors.attachment && <span>{errors.attachment.message}</span>}
+      {errors.file1 && <span style={{ color: 'red' }}>{errors.file1.message}</span>}
 
-      <button className="btn btn-secondary" type="submit">
+      <button className="btn btn-secondary" type="submit" disabled={!canSubmit}>
         Submit
       </button>
       {error && (
