@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -19,18 +19,24 @@ export default function ContactForm() {
   const [canSubmit, setCanSubmit] = useState(false);
 
   const schema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    instagram: Yup.string().required("instagram is required"),
-    age: Yup.string().required("age is required"),
-    city: Yup.string().required("city is required"),
-    job: Yup.string().required("job is required"),
-    description: Yup.string().required("description is required"),
-    job: Yup.string().required("job is required"),
-    file1: Yup.mixed().required("A file is required"),
+    name: Yup.string().required("Your name is required"),
+    email: Yup.string()
+      .email("Invalid email")
+      .required("Your email is required"),
+    instagram: Yup.string().required("Your instagram user is required"),
+    age: Yup.string().required("Your age is required"),
+    city: Yup.string().required("Your city is required"),
+    job: Yup.string().required("Your job is required"),
+    description: Yup.string().required("A description is required"),
   });
 
-  const handleFileUpload = async (e) => {
+  useEffect(() => {
+    if (photo1 && photo2) {
+      setCanSubmit(true);
+    }
+  }, [photo1, photo2]);
+
+  const handleFileUpload1 = async (e) => {
     const file = e.target.files[0];
 
     // Create a new FormData object
@@ -46,7 +52,30 @@ export default function ContactForm() {
       if (response.ok) {
         const { name } = await response.json();
         setPhoto1(name);
-        setCanSubmit(true);
+      } else {
+        console.error("File upload failed.");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
+
+  const handleFileUpload2 = async (e) => {
+    const file = e.target.files[0];
+
+    // Create a new FormData object
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const { name } = await response.json();
+        setPhoto2(name);
       } else {
         console.error("File upload failed.");
       }
@@ -83,6 +112,7 @@ export default function ContactForm() {
     formData["description"] = description;
     formData["collaboType"] = "Candidatures";
     formData["photo1"] = photo1;
+    formData["photo2"] = photo2;
     console.log(formData);
     const result = await fetch("/api/mail", {
       method: "POST",
@@ -103,11 +133,18 @@ export default function ContactForm() {
       onSubmit={handleSubmit(handleOnSubmit)}
     >
       <span className="pb-2">Audition for boy/girl Onlyfan video</span>
-
+      <div className="font-bold text-red-700">
+        You need to fill all fields and include 2 pictures of you to be able to
+        submit your application.
+      </div>
       <input
         {...register("name")}
-        className="input input-bordered"
-        placeholder="Name"
+        className={
+          errors.name
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={errors.name ? errors.name.message : "What's your name?"}
         id="name"
         type="text"
         name="name"
@@ -115,14 +152,14 @@ export default function ContactForm() {
           setName(e.target.value);
         }}
       />
-      {errors.name && (
-        <span style={{ color: "red" }}>{errors.name.message}</span>
-      )}
-
       <input
         {...register("email")}
-        className="input input-bordered"
-        placeholder="Email Address"
+        className={
+          errors.email
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={errors.email ? errors.email.message : "What's your email?"}
         id="email"
         type="email"
         name="email"
@@ -130,14 +167,18 @@ export default function ContactForm() {
           setEmail(e.target.value);
         }}
       />
-      {errors.email && (
-        <span style={{ color: "red" }}>{errors.email.message}</span>
-      )}
-
       <input
         {...register("instagram")}
-        className="input input-bordered"
-        placeholder="Instagram / Facebook page address"
+        className={
+          errors.instagram
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={
+          errors.instagram
+            ? errors.instagram.message
+            : "What's your instagram user ?"
+        }
         id="instagram"
         type="text"
         name="instagram"
@@ -145,14 +186,14 @@ export default function ContactForm() {
           setInstagram(e.target.value);
         }}
       />
-      {errors.instagram && (
-        <span style={{ color: "red" }}>{errors.instagram.message}</span>
-      )}
-
       <input
         {...register("age")}
-        className="input input-bordered"
-        placeholder="How old are you?"
+        className={
+          errors.age
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={errors.age ? errors.age.message : "How old are you ?"}
         id="age"
         type="number"
         name="age"
@@ -160,12 +201,14 @@ export default function ContactForm() {
           setAge(e.target.value);
         }}
       />
-      {errors.age && <span style={{ color: "red" }}>{errors.age.message}</span>}
-
       <input
         {...register("city")}
-        className="input input-bordered"
-        placeholder="What city do you live in ?"
+        className={
+          errors.city
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={errors.city ? errors.city.message : "Where do you live ?"}
         id="city"
         type="text"
         name="city"
@@ -173,14 +216,14 @@ export default function ContactForm() {
           setCity(e.target.value);
         }}
       />
-      {errors.city && (
-        <span style={{ color: "red" }}>{errors.city.message}</span>
-      )}
-
       <input
         {...register("job")}
-        className="input input-bordered"
-        placeholder="What is your job ?"
+        className={
+          errors.job
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={errors.job ? errors.job.message : "What's your job ?"}
         id="job"
         type="text"
         name="job"
@@ -188,37 +231,42 @@ export default function ContactForm() {
           setJob(e.target.value);
         }}
       />
-      {errors.job && <span style={{ color: "red" }}>{errors.job.message}</span>}
-
       <textarea
         {...register("description")}
-        className="textarea textarea-bordered"
-        placeholder="Describe yourself in a few words ?"
+        className={
+          errors.description
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={
+          errors.description
+            ? errors.description.message
+            : "Tell us about yourself"
+        }
         id="description"
         name="description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
-      {errors.description && (
-        <span style={{ color: "red" }}>{errors.description.message}</span>
-      )}
-      <div className=" font-bold text-red-700">
-        You need to fill all fields to be able to submit
-      </div>
       <input
         {...register("file1")}
         className="file-input file-input-bordered w-full max-w-xs"
         id="file1"
         name="file1"
         type="file"
-        onChange={handleFileUpload}
+        onChange={handleFileUpload1}
       />
       {photo1 && <p>File saved successfully.</p>}
-      {errors.file1 && (
-        <span style={{ color: "red" }}>{errors.file1.message}</span>
-      )}
-
+      <input
+        {...register("file2")}
+        className="file-input file-input-bordered w-full max-w-xs"
+        id="file2"
+        name="file2"
+        type="file"
+        onChange={handleFileUpload2}
+      />
+      {photo2 && <p>File saved successfully.</p>}
       <button className="btn btn-secondary" type="submit" disabled={!canSubmit}>
         Submit
       </button>

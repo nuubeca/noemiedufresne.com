@@ -36,7 +36,19 @@ export default async function handler(req, res) {
   }
   if (body.photo1) {
     let photo1url = `https://noemiedufresne.s3.ca-central-1.amazonaws.com/${body.photo1}`;
-    message += `Photo1: <a href="${photo1url}">ICI</a>\r\n<img src="${photo1url}">\n\r`;
+    message += `Photo1: <a href="${photo1url}">ICI</a>\r\n`;
+  }
+  if (body.photo2) {
+    let photo2url = `https://noemiedufresne.s3.ca-central-1.amazonaws.com/${body.photo2}`;
+    message += `Photo2: <a href="${photo2url}">ICI</a>\r\n`;
+  }
+  if (body.photo1) {
+    let photo1url = `https://noemiedufresne.s3.ca-central-1.amazonaws.com/${body.photo1}`;
+    message += `<img src="${photo1url}">\n\r`;
+  }
+  if (body.photo2) {
+    let photo2url = `https://noemiedufresne.s3.ca-central-1.amazonaws.com/${body.photo2}`;
+    message += `<img src="${photo2url}">\n\r`;
   }
 
   try {
