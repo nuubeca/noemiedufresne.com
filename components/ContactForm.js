@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function ContactForm() {
   const [contentCollab, setContentCollab] = useState(false);
-  const [CollaboType, setCollaboType] = useState('brand');
+  const [CollaboType, setCollaboType] = useState("brand");
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(false);
 
@@ -10,7 +10,7 @@ export default function ContactForm() {
     return <p>Thanks for your submission!</p>;
   }
 
-  const radioHandler = (status,type) => {
+  const radioHandler = (status, type) => {
     setContentCollab(status);
     setCollaboType(type);
   };
@@ -50,7 +50,7 @@ export default function ContactForm() {
           value="brand"
           className="accent-fuchsia-600"
           defaultChecked={true}
-          onChange={(e) => radioHandler(false,'brand')}
+          onChange={(e) => radioHandler(false, "brand")}
         />
         <label htmlFor="brand">Brand collaboration</label>
       </div>
@@ -61,7 +61,7 @@ export default function ContactForm() {
           name="collaboType"
           value="content"
           className="accent-fuchsia-600"
-          onChange={(e) => radioHandler(true,'content')}
+          onChange={(e) => radioHandler(true, "content")}
         />
         <label htmlFor="content">Content collaboration</label>
       </div>

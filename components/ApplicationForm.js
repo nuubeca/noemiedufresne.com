@@ -72,7 +72,6 @@ export default function ContactForm() {
   }
 
   async function handleOnSubmit() {
-    
     const formData = {};
 
     formData["name"] = name;
@@ -116,7 +115,9 @@ export default function ContactForm() {
           setName(e.target.value);
         }}
       />
-      {errors.name && <span style={{ color: 'red' }}>{errors.name.message}</span>}
+      {errors.name && (
+        <span style={{ color: "red" }}>{errors.name.message}</span>
+      )}
 
       <input
         {...register("email")}
@@ -129,7 +130,9 @@ export default function ContactForm() {
           setEmail(e.target.value);
         }}
       />
-      {errors.email && <span style={{ color: 'red' }}>{errors.email.message}</span>}
+      {errors.email && (
+        <span style={{ color: "red" }}>{errors.email.message}</span>
+      )}
 
       <input
         {...register("instagram")}
@@ -142,7 +145,9 @@ export default function ContactForm() {
           setInstagram(e.target.value);
         }}
       />
-      {errors.instagram && <span style={{ color: 'red' }}>{errors.instagram.message}</span>}
+      {errors.instagram && (
+        <span style={{ color: "red" }}>{errors.instagram.message}</span>
+      )}
 
       <input
         {...register("age")}
@@ -155,7 +160,7 @@ export default function ContactForm() {
           setAge(e.target.value);
         }}
       />
-      {errors.age && <span style={{ color: 'red' }}>{errors.age.message}</span>}
+      {errors.age && <span style={{ color: "red" }}>{errors.age.message}</span>}
 
       <input
         {...register("city")}
@@ -168,7 +173,9 @@ export default function ContactForm() {
           setCity(e.target.value);
         }}
       />
-      {errors.city && <span style={{ color: 'red' }}>{errors.city.message}</span>}
+      {errors.city && (
+        <span style={{ color: "red" }}>{errors.city.message}</span>
+      )}
 
       <input
         {...register("job")}
@@ -181,7 +188,7 @@ export default function ContactForm() {
           setJob(e.target.value);
         }}
       />
-      {errors.job && <span style={{ color: 'red' }}>{errors.job.message}</span>}
+      {errors.job && <span style={{ color: "red" }}>{errors.job.message}</span>}
 
       <textarea
         {...register("description")}
@@ -193,18 +200,24 @@ export default function ContactForm() {
           setDescription(e.target.value);
         }}
       />
-      {errors.description && <span style={{ color: 'red' }}>{errors.description.message}</span>}
-<div className=" font-bold text-red-700">You need to fill all fields to be able to submit</div>
-      <input 
-      {...register("file1")}
-      className="file-input file-input-bordered w-full max-w-xs"
-      id="file1"
-      name="file1"
-      type="file" onChange={handleFileUpload}/>
-      {photo1 && (
-        <p>File saved successfully.</p>
+      {errors.description && (
+        <span style={{ color: "red" }}>{errors.description.message}</span>
       )}
-      {errors.file1 && <span style={{ color: 'red' }}>{errors.file1.message}</span>}
+      <div className=" font-bold text-red-700">
+        You need to fill all fields to be able to submit
+      </div>
+      <input
+        {...register("file1")}
+        className="file-input file-input-bordered w-full max-w-xs"
+        id="file1"
+        name="file1"
+        type="file"
+        onChange={handleFileUpload}
+      />
+      {photo1 && <p>File saved successfully.</p>}
+      {errors.file1 && (
+        <span style={{ color: "red" }}>{errors.file1.message}</span>
+      )}
 
       <button className="btn btn-secondary" type="submit" disabled={!canSubmit}>
         Submit
