@@ -130,7 +130,7 @@ export default function ContactForm() {
       className="flex flex-col space-y-4 p-4"
       onSubmit={handleSubmit(handleOnSubmit)}
     >
-      <span className="pb-2">Audition video Onlyfan boy/girl</span>
+      <span className="pb-2">Audition video Onlyfans boy/girl</span>
       <div className="font-bold text-red-700">
         Tu dois remplir tous les champs et inclure 2 photos de toi pour pouvoir soumettre ta candidature.
       </div>
