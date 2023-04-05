@@ -205,7 +205,7 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.city ? errors.city.message : "Oui tu habites?"}
+        placeholder={errors.city ? errors.city.message : "Où habites-tu?"}
         id="city"
         type="text"
         name="city"
