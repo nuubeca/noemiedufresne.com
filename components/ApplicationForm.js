@@ -19,15 +19,15 @@ export default function ContactForm() {
   const [canSubmit, setCanSubmit] = useState(false);
 
   const schema = Yup.object().shape({
-    name: Yup.string().required("Your name is required"),
+    name: Yup.string().required("Ton nom est requis"),
     email: Yup.string()
-      .email("Invalid email")
-      .required("Your email is required"),
-    instagram: Yup.string().required("Your instagram user is required"),
-    age: Yup.string().required("Your age is required"),
-    city: Yup.string().required("Your city is required"),
-    job: Yup.string().required("Your job is required"),
-    description: Yup.string().required("A description is required"),
+      .email("Courriel invalide")
+      .required("Ton courriel est requis"),
+    instagram: Yup.string().required("Ton nom d'utilisateur Instagram est requis"),
+    age: Yup.string().required("Ton âge est requis"),
+    city: Yup.string().required("Ta ville est requise"),
+    job: Yup.string().required("Ton métier est requis"),
+    description: Yup.string().required("Une description est requise"),
   });
 
   useEffect(() => {
@@ -38,8 +38,6 @@ export default function ContactForm() {
 
   const handleFileUpload1 = async (e) => {
     const file = e.target.files[0];
-
-    // Create a new FormData object
     const formData = new FormData();
     formData.append("file", file);
 
@@ -97,7 +95,7 @@ export default function ContactForm() {
   });
 
   if (succeeded) {
-    return <p>Thanks for your submission!</p>;
+    return <p>Merci d´avoir soumis votre candidature.</p>;
   }
 
   async function handleOnSubmit() {
@@ -132,10 +130,9 @@ export default function ContactForm() {
       className="flex flex-col space-y-4 p-4"
       onSubmit={handleSubmit(handleOnSubmit)}
     >
-      <span className="pb-2">Audition for boy/girl Onlyfan video</span>
+      <span className="pb-2">Audition un video Onlyfan boy/girl</span>
       <div className="font-bold text-red-700">
-        You need to fill all fields and include 2 pictures of you to be able to
-        submit your application.
+        Tu dois remplir tous les champs et inclure 2 photos de toi pour pouvoir soumettre ta candidature.
       </div>
       <input
         {...register("name")}
@@ -144,7 +141,7 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.name ? errors.name.message : "What's your name?"}
+        placeholder={errors.name ? errors.name.message : "Quel est ton nom?"}
         id="name"
         type="text"
         name="name"
@@ -159,7 +156,7 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.email ? errors.email.message : "What's your email?"}
+        placeholder={errors.email ? errors.email.message : "Quel est ton courriel?"}
         id="email"
         type="email"
         name="email"
@@ -177,7 +174,7 @@ export default function ContactForm() {
         placeholder={
           errors.instagram
             ? errors.instagram.message
-            : "What's your instagram user ?"
+            : "Quel est ton compte compte Instagram?"
         }
         id="instagram"
         type="text"
@@ -193,7 +190,7 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.age ? errors.age.message : "How old are you ?"}
+        placeholder={errors.age ? errors.age.message : "Quel est ton âge?"}
         id="age"
         type="number"
         name="age"
@@ -208,7 +205,7 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.city ? errors.city.message : "Where do you live ?"}
+        placeholder={errors.city ? errors.city.message : "Oui tu habites?"}
         id="city"
         type="text"
         name="city"
@@ -223,7 +220,7 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.job ? errors.job.message : "What's your job ?"}
+        placeholder={errors.job ? errors.job.message : "Quel est ton métier?"}
         id="job"
         type="text"
         name="job"
@@ -241,7 +238,7 @@ export default function ContactForm() {
         placeholder={
           errors.description
             ? errors.description.message
-            : "Tell us about yourself"
+            : "Parle nous un peu de toi."
         }
         id="description"
         name="description"
@@ -257,7 +254,7 @@ export default function ContactForm() {
         type="file"
         onChange={handleFileUpload1}
       />
-      {photo1 && <p>File saved successfully.</p>}
+      {photo1 && <p>Photo sauvegardée avec succes.</p>}
       <input
         {...register("file2")}
         className="file-input file-input-bordered w-full max-w-xs"
@@ -266,9 +263,9 @@ export default function ContactForm() {
         type="file"
         onChange={handleFileUpload2}
       />
-      {photo2 && <p>File saved successfully.</p>}
+      {photo2 && <p>Photo sauvegardée avec succes.</p>}
       <button className="btn btn-secondary" type="submit" disabled={!canSubmit}>
-        Submit
+        Soumettre
       </button>
       {error && (
         <>
@@ -287,7 +284,7 @@ export default function ContactForm() {
                   d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Error! Something went wrong sending message.</span>
+              <span>Erreur! Quelque chose s´est mal passé.</span>
             </div>
           </div>
         </>
