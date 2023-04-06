@@ -13,6 +13,9 @@ export default async function handler(req, res) {
   if (body.email) {
     message += `Email: ${body.email}\r\n`;
   }
+  if (body.phone) {
+    message += `Phone: ${body.phone}\r\n`;
+  }
   if (body.collaboType) {
     message += `CollaboType: ${body.collaboType}\r\n`;
   }

@@ -9,6 +9,7 @@ export default function ContactForm() {
   const [file, setFile] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [instagram, setInstagram] = useState("");
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
@@ -23,7 +24,13 @@ export default function ContactForm() {
     email: Yup.string()
       .email("Courriel invalide")
       .required("Ton courriel est requis"),
-    instagram: Yup.string().required("Ton nom d'utilisateur Instagram est requis"),
+    phone: Yup.string()
+      .required("Ton numéro de téléphone est requis")
+      .matches(/^\d*$/, "Utilise uniquement des chiffres")
+      .required("Ton numéro de téléphone est requis"),
+    instagram: Yup.string().required(
+      "Ton nom d'utilisateur Instagram est requis"
+    ),
     age: Yup.string().required("Ton âge est requis"),
     city: Yup.string().required("Ta ville est requise"),
     job: Yup.string().required("Ton métier est requis"),
@@ -103,6 +110,7 @@ export default function ContactForm() {
 
     formData["name"] = name;
     formData["email"] = email;
+    formData["phone"] = phone;
     formData["instagram"] = instagram;
     formData["age"] = age;
     formData["city"] = city;
@@ -132,7 +140,8 @@ export default function ContactForm() {
     >
       <span className="pb-2">Audition video Onlyfans boy/girl</span>
       <div className="font-bold text-red-700">
-        Tu dois remplir tous les champs et inclure 2 photos de toi pour pouvoir soumettre ta candidature.
+        Tu dois remplir tous les champs et inclure 2 photos de toi pour pouvoir
+        soumettre ta candidature.
       </div>
       <input
         {...register("name")}
@@ -156,12 +165,32 @@ export default function ContactForm() {
             ? "input input-bordered placeholder-red-700"
             : "input input-bordered"
         }
-        placeholder={errors.email ? errors.email.message : "Quel est ton courriel?"}
+        placeholder={
+          errors.email ? errors.email.message : "Quel est ton courriel?"
+        }
         id="email"
         type="email"
         name="email"
         onChange={(e) => {
           setEmail(e.target.value);
+        }}
+      />
+      <input
+        {...register("phone")}
+        className={
+          errors.phone
+            ? "input input-bordered placeholder-red-700"
+            : "input input-bordered"
+        }
+        placeholder={
+          errors.phone ? errors.phone.message : "Quel est ton numéro de téléphone?"
+        }
+        id="phone"
+        type="number"
+        name="phone"
+        maxLength="10"
+        onChange={(e) => {
+          setPhone(e.target.value);
         }}
       />
       <input
