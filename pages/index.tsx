@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import ContactForm from "../components/ContactForm";
 import ApplicationForm from "../components/ApplicationForm";
+import ContactForm from "../components/ContactForm";
 
 const Home: NextPage = () => {
   return (
@@ -18,6 +18,7 @@ const Home: NextPage = () => {
       <div className="bg-black/50">
         <div className="relative min-h-screen flex justify-center items-center px-6 py-4 md:p-10">
           <Image
+            alt="background"
             className="-z-50"
             layout="fill"
             objectPosition="top"
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
           <div className="z-10 w-full md:w-72 h-full flex flex-col space-y-6 items-center text-center text-white">
             <div className="z-10 h-40 w-40 md:h-56 md:w-56 relative border-4 border-fuchsia-600 rounded-full">
               <Image
+                alt="avatar"
                 src={"/images/avatar.jpg"}
                 layout="fill"
                 objectPosition="top"
@@ -67,12 +69,12 @@ const Home: NextPage = () => {
             <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link> */}
-            <label
+            {/* <label
               htmlFor="my-modal-4"
               className="text-lg md:text-sm bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
             >
               Candidatures auditions Boy/Girl video
-            </label>
+            </label> */}
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
