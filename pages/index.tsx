@@ -70,12 +70,12 @@ const Home: NextPage = () => {
             <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link> */}
-            {/* <label
+            <label
               htmlFor="my-modal-5"
               className="text-lg md:text-md bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
             >
               Vote pour The OnlyOne
-            </label> */}
+            </label>
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
