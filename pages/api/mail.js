@@ -10,6 +10,9 @@ export default async function handler(req, res) {
   if (body.name) {
     message += `Name: ${body.name}\r\n`;
   }
+  if (body.vote) {
+    message += `Vote: ${body.vote}\r\n`;
+  }
   if (body.email) {
     message += `Email: ${body.email}\r\n`;
   }

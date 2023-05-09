@@ -6,6 +6,7 @@ import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
 import ApplicationForm from "../components/ApplicationForm";
 import ContactForm from "../components/ContactForm";
+import VoteForm from "../components/VoteForm";
 
 const Home: NextPage = () => {
   return (
@@ -69,12 +70,12 @@ const Home: NextPage = () => {
             <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link> */}
-            {/* <label
-              htmlFor="my-modal-4"
-              className="text-lg md:text-sm bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
+            <label
+              htmlFor="my-modal-5"
+              className="text-lg md:text-md bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
             >
-              Candidatures auditions Boy/Girl video
-            </label> */}
+              Vote pour The OnlyOne
+            </label>
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
@@ -155,6 +156,19 @@ const Home: NextPage = () => {
             </label>
             {/* This function is temporarily unavailable. */}
             <ApplicationForm />
+          </div>
+        </div>
+        <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box relative">
+            <label
+              htmlFor="my-modal-5"
+              className="btn btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
+            {/* This function is temporarily unavailable. */}
+            <VoteForm />
           </div>
         </div>
       </div>
