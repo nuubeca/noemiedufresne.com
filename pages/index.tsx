@@ -70,6 +70,10 @@ const Home: NextPage = () => {
             <Link href="https://imgur.com/a/f608FoH">
               <img src="/images/blackfriday.svg" className="w-full" />
             </Link> */}
+            <div className="text-xl">
+              ⬇️ Video Exclusive ⬇️
+              <br /> ⬇️ The OnlyOne ⬇️
+            </div>
             {/* <label
               htmlFor="my-modal-5"
               className="text-lg md:text-md bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
