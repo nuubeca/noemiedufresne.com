@@ -25,10 +25,10 @@ const Home: NextPage = () => {
             objectPosition="top"
             objectFit="cover"
             priority
-            src="/images/background.jpg"
+            src="/images/bg2024.jpeg"
           />
           <div className="z-10 w-full md:w-72 h-full flex flex-col space-y-6 items-center text-center text-white">
-            <div className="z-10 h-40 w-40 md:h-56 md:w-56 relative border-4 border-fuchsia-600 rounded-full">
+            {/* <div className="z-10 h-40 w-40 md:h-56 md:w-56 relative border-4 border-fuchsia-600 rounded-full">
               <Image
                 alt="avatar"
                 src={"/images/avatar.jpg"}
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                 className="z-10 rounded-full bg-fuchsia-600"
                 priority
               />
-            </div>
+            </div> */}
             <div>
               <h2 className="text-7xl md:text-9xl autobiography">Noémie</h2>
               <h3 className="text-md md:text-3xl">DUFRESNE</h3>
