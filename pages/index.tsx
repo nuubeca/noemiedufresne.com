@@ -55,14 +55,14 @@ const Home: NextPage = () => {
                 </Link>
               </div>
             </div>
-            <div className=" border-2 border-fuchsia-600 text-lg md:text-xl w-full bg-black text-fuchsia-600 p-3 md:p-1  rounded-full cursor-pointer">
+            {/* <div className=" border-2 border-fuchsia-600 text-lg md:text-xl w-full bg-black text-fuchsia-600 p-3 md:p-1  rounded-full cursor-pointer">
               <Link href="https://noumyofficialshop.com/">
                 <div className="flex justify-center items-center space-x-4">
                   Calendrier 2024 &<br className="hidden md:block" />
                   Promo exclusive
                 </div>
               </Link>
-            </div>
+            </div> */}
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
@@ -78,7 +78,21 @@ const Home: NextPage = () => {
                 </div>
               </Link>
             </div>
-            <p className="text-[12px] leading-3 lg:text-xs text-justify">
+            {/* <Link href="https://vimeo.com/932945766/67960b6838?share=copy">
+              <button className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer">
+                A little surprise for you <br />
+                (free video)
+              </button>
+            </Link> */}
+            <div className=" border-2 border-fuchsia-600 text-lg md:text-xl w-full bg-black text-fuchsia-600 p-3 md:p-1  rounded-full cursor-pointer">
+              <Link href="https://vimeo.com/932945766/67960b6838?share=copy">
+                <div className="flex justify-center items-center space-x-4">
+                  A little surprise for you <br />
+                  (free video)
+                </div>
+              </Link>
+            </div>
+            {/* <p className="text-[12px] leading-3 lg:text-xs text-justify">
               Content creator for the past ten years, Noémie Dufresne stands out
               for the originality of her various concepts and the quality of her
               content. Her avant-garde style and lifestyle perfectly represent
@@ -89,7 +103,7 @@ const Home: NextPage = () => {
               className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
             >
               Collaboration
-            </label>
+            </label> */}
           </div>
         </div>
       </div>
