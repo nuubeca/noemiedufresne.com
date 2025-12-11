@@ -1,29 +1,21 @@
-import type { NextPage } from "next";
-import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Link from "next/link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import ApplicationForm from "../components/ApplicationForm";
-import ContactForm from "../components/ContactForm";
-import VoteForm from "../components/VoteForm";
+import ContactForm from "./components/ContactForm";
+import ApplicationForm from "./components/ApplicationForm";
+import VoteForm from "./components/VoteForm";
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <>
-      <NextSeo
-        title="Noémie Dufresne - Official Site"
-        description="Content creator for the past ten years, Noémie Dufresne stands out for the originality of her various concepts and the quality of her content. Her avant-garde style and lifestyle perfectly represent the glamour of everyday's life."
-        canonical="https://noemiedufresne.com/"
-      />
       <div className="bg-black/50">
         <div className="relative min-h-screen flex justify-center items-center px-6 py-4 md:p-10">
           <Image
             alt="background"
             className="-z-50"
-            layout="fill"
-            objectPosition="top"
-            objectFit="cover"
+            fill
+            style={{ objectPosition: "top", objectFit: "cover" }}
             priority
             src="/images/bg2024.jpeg"
           />
@@ -55,35 +47,20 @@ const Home: NextPage = () => {
                 </Link>
               </div>
             </div>
-            {/* <div className=" border-2 border-fuchsia-600 text-lg md:text-xl w-full bg-black text-fuchsia-600 p-3 md:p-1  rounded-full cursor-pointer">
-              <Link href="https://noumyofficialshop.com/">
-                <div className="flex justify-center items-center space-x-4">
-                  Calendrier 2024 &<br className="hidden md:block" />
-                  Promo exclusive
-                </div>
-              </Link>
-            </div> */}
             <div className="text-md md:text-lg w-full font-extrabold  bg-white text-fuchsia-600 p-2 md:p-3 rounded-full cursor-pointer">
               <Link href="https://onlyfans.com/noemiedufresne">
                 <div className="flex flex-col justify-center items-center space-x-4 text-md">
-                  <img src="/images/onlyfans.svg" className=" w-32" />
+                  <img src="/images/onlyfans.svg" className=" w-32" alt="OnlyFans" />
                 </div>
               </Link>
             </div>
             <div className=" text-lg md:text-xl  w-full  bg-white text-fuchsia-600 p-3 md:p-4 rounded-full cursor-pointer">
               <Link href="https://mym.fans/Noemiedufresne">
                 <div className="flex justify-center items-center space-x-4">
-                  <img src="/images/mym.svg" className=" w-14" />
-                  {/* <span>MYM</span> */}
+                  <img src="/images/mym.svg" className=" w-14" alt="MYM" />
                 </div>
               </Link>
             </div>
-            {/* <Link href="https://vimeo.com/932945766/67960b6838?share=copy">
-              <button className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer">
-                A little surprise for you <br />
-                (free video)
-              </button>
-            </Link> */}
             <div className=" border-2 border-fuchsia-600 text-lg md:text-xl w-full bg-black text-fuchsia-600 p-3 md:p-1  rounded-full cursor-pointer">
               <Link href="https://vimeo.com/932945766/67960b6838?share=copy">
                 <div className="flex justify-center items-center space-x-4">
@@ -92,18 +69,6 @@ const Home: NextPage = () => {
                 </div>
               </Link>
             </div>
-            {/* <p className="text-[12px] leading-3 lg:text-xs text-justify">
-              Content creator for the past ten years, Noémie Dufresne stands out
-              for the originality of her various concepts and the quality of her
-              content. Her avant-garde style and lifestyle perfectly represent
-              the glamour of everyday's life.
-            </p>
-            <label
-              htmlFor="my-modal-3"
-              className="text-lg md:text-xl bg-fuchsia-600 w-full py-2 md:py-5 rounded-full cursor-pointer"
-            >
-              Collaboration
-            </label> */}
           </div>
         </div>
       </div>
@@ -117,7 +82,6 @@ const Home: NextPage = () => {
             >
               ✕
             </label>
-            {/* This function is temporarily unavailable. */}
             <ContactForm />
           </div>
         </div>
@@ -130,7 +94,6 @@ const Home: NextPage = () => {
             >
               ✕
             </label>
-            {/* This function is temporarily unavailable. */}
             <ApplicationForm />
           </div>
         </div>
@@ -143,13 +106,11 @@ const Home: NextPage = () => {
             >
               ✕
             </label>
-            {/* This function is temporarily unavailable. */}
             <VoteForm />
           </div>
         </div>
       </div>
     </>
   );
-};
+}
 
-export default Home;

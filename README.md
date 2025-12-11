@@ -1,23 +1,113 @@
-# Next.js + Tailwind CSS Example
+# Noémie Dufresne - Site Officiel
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Site web officiel de Noémie Dufresne, créatrice de contenu.
 
-## Deploy your own
+## Stack Technique
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+- **Next.js 15** avec App Router
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Server Actions** pour la gestion des formulaires
+- **Resend** pour l'envoi d'emails
+- **AWS S3** pour l'upload de fichiers
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Installation
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+# Installer les dépendances
+yarn install
+
+# Copier le fichier d'environnement et le configurer
+cp .env.example .env.local
+
+# Lancer le serveur de développement
+yarn dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Le site sera accessible sur [http://localhost:3000](http://localhost:3000).
+
+## Configuration
+
+### Variables d'environnement requises
+
+Créez un fichier `.env.local` à la racine du projet avec les variables suivantes:
+
+```env
+# Resend API
+RESEND_API_KEY=re_xxxxx
+RESEND_EMAIL_FROM=noreply@votredomaine.com
+RESEND_EMAIL_TO=votre-email@example.com
+
+# AWS S3
+AWS_REGION=ca-central-1
+AWS_ACCESS_KEY_ID=votre-access-key-id
+AWS_SECRET_ACCESS_KEY=votre-secret-access-key
+AWS_BUCKET_NAME=noemiedufresne
+
+# Google Analytics (optionnel)
+NEXT_PUBLIC_GOOGLE_ANALYTICS=G-XXXXXXXXXX
+```
+
+### Configuration Resend
+
+1. Créez un compte sur [resend.com](https://resend.com)
+2. Ajoutez et vérifiez votre domaine
+3. Générez une clé API
+4. Configurez les variables d'environnement
+
+### Configuration AWS S3
+
+1. Créez un bucket S3 dans la région souhaitée
+2. Configurez les permissions publiques pour les objets uploadés
+3. Créez un utilisateur IAM avec les permissions S3 nécessaires
+4. Générez des clés d'accès
+
+## Fonctionnalités
+
+- Page d'accueil avec liens vers les réseaux sociaux
+- Formulaire de collaboration pour les marques
+- Formulaire de candidature avec upload de photos
+- Formulaire de vote
+- Envoi d'emails via Resend
+- Upload de fichiers vers AWS S3
+
+## Déploiement
+
+Le site peut être déployé sur [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+N'oubliez pas de configurer les variables d'environnement dans les paramètres de votre projet Vercel.
+
+## Structure du Projet
+
+```
+├── app/
+│   ├── actions/          # Server Actions
+│   │   ├── email.ts      # Action pour l'envoi d'emails
+│   │   └── upload.ts     # Action pour l'upload de fichiers
+│   ├── components/       # Composants React Client
+│   │   ├── ApplicationForm.tsx
+│   │   ├── ContactForm.tsx
+│   │   └── VoteForm.tsx
+│   ├── layout.tsx        # Layout racine
+│   └── page.tsx          # Page d'accueil
+├── public/               # Fichiers statiques
+├── styles/               # Styles globaux
+└── ...
+```
+
+## Développement
+
+```bash
+# Lancer le serveur de développement
+yarn dev
+
+# Build de production
+yarn build
+
+# Lancer le serveur de production
+yarn start
+```

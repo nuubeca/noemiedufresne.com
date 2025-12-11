@@ -1,7 +1,10 @@
+"use client";
+
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
+import { sendEmail } from "../actions/email";
 
 export default function VoteForm() {
   const [succeeded, setSucceeded] = useState(false);
@@ -9,6 +12,7 @@ export default function VoteForm() {
   const [email, setEmail] = useState("");
   const [vote, setVote] = useState("");
   const [canSubmit, setCanSubmit] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const schema = Yup.object().shape({
     vote: Yup.string().required("Ton vote est requis"),
@@ -32,26 +36,25 @@ export default function VoteForm() {
   });
 
   if (succeeded) {
-    return <p>Merci d´avoir soumis votre candidature.</p>;
+    return <p>Merci d&apos;avoir soumis votre candidature.</p>;
   }
 
   async function handleOnSubmit() {
-    const formData = {};
+    const formData = {
+      email,
+      vote,
+    };
 
-    formData["email"] = email;
-    formData["vote"] = vote;
-    console.log(formData);
-    const result = await fetch("/api/mail", {
-      method: "POST",
-      body: JSON.stringify(formData),
+    startTransition(async () => {
+      const result = await sendEmail(formData);
+
+      if (result.success) {
+        setSucceeded(true);
+        setCanSubmit(true);
+      } else {
+        setError(true);
+      }
     });
-
-    if (result.ok) {
-      setSucceeded(true);
-      setCanSubmit(true);
-    } else {
-      setError(true);
-    }
   }
 
   return (
@@ -89,7 +92,7 @@ export default function VoteForm() {
         />
         <span className="pl-2">Julien</span>
       </div>
-      <span className="text-red-700">{errors.vote && errors.vote.message}</span>
+      <span className="text-red-700">{errors.vote && String(errors.vote.message)}</span>
       <input
         {...register("email")}
         className={
@@ -98,7 +101,7 @@ export default function VoteForm() {
             : "input input-bordered"
         }
         placeholder={
-          errors.email ? errors.email.message : "Quel est ton courriel?"
+          errors.email ? String(errors.email.message) : "Quel est ton courriel?"
         }
         id="email"
         type="email"
@@ -107,8 +110,8 @@ export default function VoteForm() {
           setEmail(e.target.value);
         }}
       />
-      <button className="btn btn-secondary" type="submit" disabled={!canSubmit}>
-        Soumettre
+      <button className="btn btn-secondary" type="submit" disabled={!canSubmit || isPending}>
+        {isPending ? "Envoi en cours..." : "Soumettre"}
       </button>
       {error && (
         <>
@@ -127,7 +130,7 @@ export default function VoteForm() {
                   d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Erreur! Quelque chose s´est mal passé.</span>
+              <span>Erreur! Quelque chose s&apos;est mal passé.</span>
             </div>
           </div>
         </>
@@ -135,3 +138,4 @@ export default function VoteForm() {
     </form>
   );
 }
+

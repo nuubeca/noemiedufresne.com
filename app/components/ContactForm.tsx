@@ -1,42 +1,46 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useTransition } from "react";
+import { sendEmail } from "../actions/email";
 
 export default function ContactForm() {
   const [contentCollab, setContentCollab] = useState(false);
   const [CollaboType, setCollaboType] = useState("brand");
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   if (succeeded) {
     return <p>Thanks for your submission!</p>;
   }
 
-  const radioHandler = (status, type) => {
+  const radioHandler = (status: boolean, type: string) => {
     setContentCollab(status);
     setCollaboType(type);
   };
 
-  async function handleOnSubmit(e) {
+  async function handleOnSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const formData = {};
+    const formData: Record<string, string> = {};
 
     Array.from(e.currentTarget.elements).forEach((field) => {
+      if (!(field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)) return;
       if (!field.name) return;
       formData[field.name] = field.value;
     });
 
     formData["collaboType"] = CollaboType;
 
-    const result = await fetch("/api/mail", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    });
+    startTransition(async () => {
+      const result = await sendEmail(formData);
 
-    if (result.status === 200) {
-      setSucceeded(true);
-    } else {
-      setError(true);
-    }
+      if (result.success) {
+        setSucceeded(true);
+      } else {
+        setError(true);
+      }
+    });
   }
 
   return (
@@ -102,8 +106,8 @@ export default function ContactForm() {
         name="message"
         required
       />
-      <button className="btn btn-secondary" type="submit">
-        Submit
+      <button className="btn btn-secondary" type="submit" disabled={isPending}>
+        {isPending ? "Sending..." : "Submit"}
       </button>
       {error && (
         <>
@@ -130,3 +134,4 @@ export default function ContactForm() {
     </form>
   );
 }
+
