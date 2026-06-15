@@ -61,14 +61,6 @@ export default function Home() {
                 </div>
               </Link>
             </div>
-            <div className=" border-2 border-fuchsia-600 text-lg md:text-xl w-full bg-black text-fuchsia-600 p-3 md:p-1  rounded-full cursor-pointer">
-              <Link href="https://vimeo.com/932945766/67960b6838?share=copy">
-                <div className="flex justify-center items-center space-x-4">
-                  A little surprise for you <br />
-                  (free video)
-                </div>
-              </Link>
-            </div>
           </div>
         </div>
       </div>
