@@ -1,8 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { BadgeCheck } from "lucide-react";
 import Script from "next/script";
-import { INSTAGRAM_LINK_ID } from "./config";
 import { breakoutScript } from "./breakout-script";
 
 const NAME = "Noémie Dufresne";
@@ -59,10 +57,7 @@ export default function InstagramPage() {
 
           {/* Links */}
           <div className="flex flex-col gap-3">
-            <Link
-              href={`/instagram/visit?l=${INSTAGRAM_LINK_ID}`}
-              className="group relative block w-full aspect-square rounded-2xl overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.08)] transition-opacity hover:opacity-85"
-            >
+            <div className="relative block w-full aspect-square rounded-2xl overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
               <Image
                 src="/images/instagram-more.jpg"
                 alt=""
@@ -75,7 +70,7 @@ export default function InstagramPage() {
                   More of me ♥️ (click)
                 </span>
               </div> */}
-            </Link>
+            </div>
           </div>
 
           <p className="mt-auto pt-6 text-xs font-medium text-gray-400/85">
