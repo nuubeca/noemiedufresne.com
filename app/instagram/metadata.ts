@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const linkInBioMetadata: Metadata = {
   title: "Noémie Dufresne (@noemie.dufresne)",
   description: "See what Noémie Dufresne is sharing.",
   robots: { index: false, follow: false, noarchive: true },
@@ -16,11 +16,3 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, statusBarStyle: "black-translucent" },
   formatDetection: { telephone: false },
 };
-
-export default function InstagramLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
-}
